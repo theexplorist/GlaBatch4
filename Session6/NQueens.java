@@ -7,34 +7,36 @@ public class NQueens {
 	private static boolean kyaQueenRakhun(int[][] board, int cr, int cc, int n) {
 		// TODO Auto-generated method stub
 
-		for (int row = 0; row <= cr - 1; row++) {
-			if (board[row][cc] == 1) {
+		for(int row = 0; row < cr; row++) {
+			if(board[row][cc] == 1) {
 				return false;
 			}
 		}
-
+		
 		int row = cr;
 		int col = cc;
-
-		while (row >= 0 && col < n) {
-			if (board[row][col] == 1) {
+		
+		while(row >= 0 && col >= 0) {
+			if(board[row][col] == 1) {
 				return false;
 			}
-			row--;
-			col++;
-		}
-
-		row = cr;
-		col = cc;
-
-		while (row >= 0 && col >= 0) {
-			if (board[row][col] == 1) {
-				return false;
-			}
+			
 			row--;
 			col--;
 		}
-
+		
+		row = cr;
+		col = cc;
+		
+		while(row >= 0 && col < n) {
+			if(board[row][col] == 1) {
+				return false;
+			}
+			
+			row--;
+			col++;
+		}
+		
 		return true;
 	}
 
@@ -42,6 +44,19 @@ public class NQueens {
 		// TODO Auto-generated method stub
 
 		if (cr == n) {
+			for(int i = 0; i < n; i++) {
+				for(int j = 0; j < n; j++) {
+					if(board[i][j] == 1)
+					System.out.print("Q ");
+					else
+						System.out.print("_ ");
+				}
+				
+				System.out.println();
+			}
+			
+			System.out.println("****************************************");
+			
 			count++;
 			return;
 		}
